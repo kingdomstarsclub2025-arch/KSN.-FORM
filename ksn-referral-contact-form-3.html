@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kingdom Stars Network — Referral & Contact Partnership Forms</title>
+  <meta name="description" content="Kingdom Stars Network Referral & Contact Information Form and Contact & Partnership Information Form" />
+  <style>
+    :root {
+      --navy: #1a365d;
+      --blue: #2b6cb0;
+      --gold: #c9a227;
+      --gray: #4a5568;
+      --light: #f7fafc;
+      --border: #cbd5e0;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #edf2f7;
+      color: #1a202c;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    header.brand {
+      background: var(--white);
+      border-radius: 12px 12px 0 0;
+      padding: 1.5rem 1.25rem 1rem;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    header.brand h1 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+    }
+    header.brand .tagline {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+    }
+    header.brand .contact {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 0.5rem;
+    }
+    .tabs {
+      display: flex;
+      background: var(--navy);
+      border-radius: 0;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 0.85rem 0.5rem;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tabs button.active {
+      background: var(--white);
+      color: var(--navy);
+    }
+    .tabs button:hover:not(.active) {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .panel {
+      display: none;
+      background: var(--white);
+      padding: 1.5rem 1.25rem 2rem;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    }
+    .panel.active { display: block; }
+    .intro {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 0.75rem;
+      border-radius: 4px;
+      margin: 1.25rem 0 0.85rem;
+    }
+    .field {
+      margin-bottom: 0.9rem;
+    }
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background: var(--light);
+      transition: border-color 0.15s;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(43,108,176,0.12);
+    }
+    .field textarea { min-height: 72px; resize: vertical; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 560px) {
+      .row { grid-template-columns: 1fr; }
+      .tabs button { font-size: 0.75rem; padding: 0.7rem 0.3rem; }
+    }
+    .checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+    }
+    .checks label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #2d3748;
+      cursor: pointer;
+    }
+    .checks input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--navy);
+      cursor: pointer;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #153e75; }
+    .btn-secondary {
+      background: var(--light);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+    .btn-gold {
+      background: var(--gold);
+      color: #1a202c;
+    }
+    .btn-gold:hover { background: #b8911f; }
+    footer.site {
+      text-align: center;
+      padding: 1.25rem 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+    footer.site strong { color: var(--navy); }
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: var(--navy);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="brand">
+      <h1>KINGDOM STARS NETWORK</h1>
+      <div class="tagline">INSPIRE | DISCIPLE | DEVELOP | EMPOWER | IMPACT</div>
+      <div class="contact">Phone/WhatsApp: 08169035618 &nbsp;|&nbsp; Email: kingdomstarsclub2025@gmail.com</div>
+    </header>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="active" data-tab="referral" role="tab" aria-selected="true">Referral &amp; Contact Form</button>
+      <button type="button" data-tab="partnership" role="tab" aria-selected="false">Contact &amp; Partnership Form</button>
+    </div>
+
+    <!-- ========== REFERRAL FORM ========== -->
+    <div id="referral" class="panel active" role="tabpanel">
+      <p class="intro">
+        As part of our efforts to expand the reach of Kingdom Stars Network, we are identifying potential schools, churches, parents, individuals, and organizations interested in youth development, mentorship, leadership training, and educational programmes. Kindly provide information about people or institutions who may wish to connect, collaborate, partner, or support our vision.
+      </p>
+      <form id="form-referral" autocomplete="on">
+        <div class="section-title">DETAILS OF REFERRED PERSON / INSTITUTION</div>
+
+        <div class="field">
+          <label for="r_name">1. Name of Person / School / Church / Organization</label>
+          <input type="text" id="r_name" name="r_name" required placeholder="Full name or institution name" />
+        </div>
+        <div class="field">
+          <label for="r_contact">2. Contact Person (if applicable)</label>
+          <input type="text" id="r_contact" name="r_contact" placeholder="Name of contact person" />
+        </div>
+        <div class="field">
+          <label for="r_address">3. Address / Location</label>
+          <input type="text" id="r_address" name="r_address" placeholder="City, state, or full address" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="r_phone">4. Phone / WhatsApp</label>
+            <input type="tel" id="r_phone" name="r_phone" placeholder="e.g. 08012345678" />
+          </div>
+          <div class="field">
+            <label for="r_email">5. Email Address</label>
+            <input type="email" id="r_email" name="r_email" placeholder="email@example.com" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="r_profession">6. Profession / Occupation or Type of Institution</label>
+          <input type="text" id="r_profession" name="r_profession" placeholder="e.g. Teacher, School, Church, NGO" />
+        </div>
+        <div class="field">
+          <label>7. Possible Area of Interest / Support</label>
+          <div class="checks">
+            <label><input type="checkbox" name="r_interest" value="Youth Development" /> Youth Development</label>
+            <label><input type="checkbox" name="r_interest" value="Education and Mentorship" /> Education &amp; Mentorship</label>
+            <label><input type="checkbox" name="r_interest" value="School/Church Partnership" /> School/Church Partnership</label>
+            <label><input type="checkbox" name="r_interest" value="Volunteering" /> Volunteering</label>
+            <label><input type="checkbox" name="r_interest" value="Sponsorship/Financial Support" /> Sponsorship / Financial Support</label>
+            <label><input type="checkbox" name="r_interest" value="Other" /> Other</label>
+          </div>
+          <input type="text" id="r_other" name="r_other" placeholder="If Other, please specify" style="margin-top:0.4rem" />
+        </div>
+        <div class="field">
+          <label for="r_relationship">8. Your Relationship with the Person / Institution</label>
+          <input type="text" id="r_relationship" name="r_relationship" placeholder="e.g. Colleague, Family, Member, Partner" />
+        </div>
+        <div class="field">
+          <label for="r_additional">9. Additional Information or Introduction Assistance</label>
+          <textarea id="r_additional" name="r_additional" placeholder="Any extra details that may help us connect..."></textarea>
+        </div>
+        <div class="field">
+          <label for="r_your_name">Your Name (referrer)</label>
+          <input type="text" id="r_your_name" name="r_your_name" placeholder="Your full name" />
+        </div>
+        <div class="field">
+          <label for="r_your_phone">Your Phone / Email</label>
+          <input type="text" id="r_your_phone" name="r_your_phone" placeholder="So we can follow up with you if needed" />
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Submit Referral</button>
+          <button type="button" class="btn btn-secondary" data-print="referral">Print / Save PDF</button>
+          <button type="reset" class="btn btn-secondary">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ========== CONTACT & PARTNERSHIP FORM ========== -->
+    <div id="partnership" class="panel" role="tabpanel">
+      <p class="intro">
+        Kingdom Stars Network is building a network of individuals, parents, schools, churches, and organizations committed to raising purposeful, responsible, and impactful young people. Kindly provide the following information to help us maintain contact and explore partnership opportunities.
+      </p>
+      <form id="form-partnership" autocomplete="on">
+        <div class="section-title">PERSONAL / ORGANIZATIONAL INFORMATION</div>
+
+        <div class="field">
+          <label for="c_name">1. Full Name / Organization Name</label>
+          <input type="text" id="c_name" name="c_name" required placeholder="Your name or organization" />
+        </div>
+        <div class="field">
+          <label for="c_address">2. Address</label>
+          <input type="text" id="c_address" name="c_address" placeholder="City, state, or full address" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="c_phone">3. Phone Number</label>
+            <input type="tel" id="c_phone" name="c_phone" placeholder="e.g. 08012345678" />
+          </div>
+          <div class="field">
+            <label for="c_whatsapp">4. WhatsApp (if different)</label>
+            <input type="tel" id="c_whatsapp" name="c_whatsapp" placeholder="WhatsApp number" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="c_email">5. Email Address</label>
+          <input type="email" id="c_email" name="c_email" placeholder="email@example.com" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="c_profession">6. Profession / Occupation</label>
+            <input type="text" id="c_profession" name="c_profession" placeholder="Your profession" />
+          </div>
+          <div class="field">
+            <label for="c_org">7. Organization / Institution</label>
+            <input type="text" id="c_org" name="c_org" placeholder="Where you work or serve" />
+          </div>
+        </div>
+        <div class="field">
+          <label>8. Category</label>
+          <div class="checks">
+            <label><input type="checkbox" name="c_category" value="Individual" /> Individual</label>
+            <label><input type="checkbox" name="c_category" value="Parent" /> Parent</label>
+            <label><input type="checkbox" name="c_category" value="School" /> School</label>
+            <label><input type="checkbox" name="c_category" value="Church" /> Church</label>
+            <label><input type="checkbox" name="c_category" value="Organization" /> Organization</label>
+            <label><input type="checkbox" name="c_category" value="Other" /> Other</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>9. Area of Interest or Support</label>
+          <div class="checks">
+            <label><input type="checkbox" name="c_interest" value="Mentorship" /> Mentorship</label>
+            <label><input type="checkbox" name="c_interest" value="Education" /> Education</label>
+            <label><input type="checkbox" name="c_interest" value="Youth Development" /> Youth Development</label>
+            <label><input type="checkbox" name="c_interest" value="Volunteering" /> Volunteering</label>
+            <label><input type="checkbox" name="c_interest" value="Partnership" /> Partnership</label>
+            <label><input type="checkbox" name="c_interest" value="Sponsorship" /> Sponsorship</label>
+            <label><input type="checkbox" name="c_interest" value="Prayer Support" /> Prayer Support</label>
+            <label><input type="checkbox" name="c_interest" value="Other" /> Other</label>
+          </div>
+          <input type="text" id="c_other" name="c_other" placeholder="If Other, please specify" style="margin-top:0.4rem" />
+        </div>
+        <div class="field">
+          <label for="c_skills">10. Skills, Resources, or Services You Can Offer</label>
+          <textarea id="c_skills" name="c_skills" placeholder="Describe what you can contribute..."></textarea>
+        </div>
+        <div class="field">
+          <label for="c_comments">11. Additional Information / Comments</label>
+          <textarea id="c_comments" name="c_comments" placeholder="Anything else you would like us to know..."></textarea>
+        </div>
+        <div class="field">
+          <label>12. Preferred Means of Contact</label>
+          <div class="checks">
+            <label><input type="checkbox" name="c_pref" value="Phone Call" /> Phone Call</label>
+            <label><input type="checkbox" name="c_pref" value="WhatsApp" /> WhatsApp</label>
+            <label><input type="checkbox" name="c_pref" value="Email" /> Email</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Submit Form</button>
+          <button type="button" class="btn btn-secondary" data-print="partnership">Print / Save PDF</button>
+          <button type="reset" class="btn btn-secondary">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="site">
+      <strong>DISCOVER • DEVELOP • DEPLOY</strong><br />
+      Kingdom Stars Network — Raising Kingdom Stars for God's Glory<br />
+      Contact: 08169035618 &nbsp;|&nbsp; kingdomstarsclub2025@gmail.com
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabs button').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3200);
+    }
+
+    function getChecked(name) {
+      return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value).join(', ');
+    }
+
+    // Build mailto body from form data
+    function formToMailto(formId, subject) {
+      const form = document.getElementById(formId);
+      const data = new FormData(form);
+      let body = subject + '\n\n';
+      for (const [key, val] of data.entries()) {
+        if (val && String(val).trim()) body += key + ': ' + val + '\n';
+      }
+      // also append checkbox groups that FormData may miss if none checked
+      return 'mailto:kingdomstarsclub2025@gmail.com?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+    }
+
+    document.getElementById('form-referral').addEventListener('submit', e => {
+      e.preventDefault();
+      // Enhance with checkbox values
+      const interests = getChecked('r_interest');
+      const form = e.target;
+      const extra = document.createElement('input');
+      extra.type = 'hidden'; extra.name = 'Areas of Interest'; extra.value = interests;
+      form.appendChild(extra);
+      window.location.href = formToMailto('form-referral', 'KSN Referral Form Submission');
+      form.removeChild(extra);
+      showToast('Opening email to send your referral…');
+    });
+
+    document.getElementById('form-partnership').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+      const h1 = document.createElement('input'); h1.type = 'hidden'; h1.name = 'Category'; h1.value = getChecked('c_category'); form.appendChild(h1);
+      const h2 = document.createElement('input'); h2.type = 'hidden'; h2.name = 'Areas of Interest'; h2.value = getChecked('c_interest'); form.appendChild(h2);
+      const h3 = document.createElement('input'); h3.type = 'hidden'; h3.name = 'Preferred Contact'; h3.value = getChecked('c_pref'); form.appendChild(h3);
+      window.location.href = formToMailto('form-partnership', 'KSN Contact & Partnership Form Submission');
+      form.removeChild(h1); form.removeChild(h2); form.removeChild(h3);
+      showToast('Opening email to send your form…');
+    });
+
+    // Print / Save as PDF
+    document.querySelectorAll('[data-print]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.print;
+        // ensure correct tab is visible
+        document.querySelectorAll('.tabs button').forEach(b => {
+          b.classList.toggle('active', b.dataset.tab === tab);
+        });
+        document.querySelectorAll('.panel').forEach(p => {
+          p.classList.toggle('active', p.id === tab);
+        });
+        setTimeout(() => window.print(), 100);
+      });
+    });
+  </script>
+</body>
+</html>
